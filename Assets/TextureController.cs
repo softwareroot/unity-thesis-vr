@@ -36,10 +36,6 @@ public class TextureController : MonoBehaviour {
     }
 
     private void SetTexture() {
-        //var parentController = parent.GetComponent<EnemyCtrl>();
-        //if (parentController.type == EnemyCtrl.ENEMY_TYPE.SCRATCHER) {
-
-        //    }
     }
 
     private void removeObject(bool hasParent) {
