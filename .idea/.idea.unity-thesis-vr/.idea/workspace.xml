@@ -7,6 +7,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="unity-thesis-vr" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -25,6 +28,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/AmmoPickup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/GunScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Hover.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/EnemyCtrl.cs" />
       </list>
     </option>
   </component>
@@ -65,7 +69,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1581950570396</updated>
-      <workItem from="1581950578571" duration="1997000" />
+      <workItem from="1581950578571" duration="2786000" />
     </task>
     <servers />
   </component>
