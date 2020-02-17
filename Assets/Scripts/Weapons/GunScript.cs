@@ -57,7 +57,7 @@ public class GunScript : MonoBehaviour {
         impactEffectSolid = GameObject.FindGameObjectWithTag("ie_solid");
 
         // Set initial ammo count
-        currentAmmo = maxAmmo;
+        currentAmmo = 0;
 
         // Initiate and set up other variables
         switch (GUN_TYPE) {
