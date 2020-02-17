@@ -39,6 +39,10 @@ public class GunScript : MonoBehaviour {
     public Animator animatorReload;
     public int mags;
 
+    public void addMag() {
+        mags += 1;
+    }
+
     void Start() {
         // Initiate animator object for 'scoping animations'
         animator = gameObject.GetComponentInParent<Animator>();
