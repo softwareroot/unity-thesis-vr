@@ -8,7 +8,7 @@ public class PlayerCtrl : MonoBehaviour {
     private float gravity       =   11.5f;
     private float jumpSpeed     =   4.5f;
     private float vSpeed        =   0;
-    private int hp              =   50;
+    private int hp              =   100;
 
     private CharacterController controller;
     public int distanceOfRaycast;

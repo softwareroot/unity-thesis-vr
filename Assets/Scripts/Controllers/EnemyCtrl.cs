@@ -11,7 +11,7 @@ public class EnemyCtrl : MonoBehaviour {
     }
 
     // Constants
-    private const float CONST_LOOK_RADIUS = 100.0f;
+    private const float CONST_LOOK_RADIUS           =   100.0f;
 
     // Scratcher constants
     private const float SCRATCHER_SPEED             =   2.0f;
@@ -156,7 +156,6 @@ public class EnemyCtrl : MonoBehaviour {
     private void SetAgent(NavMeshAgent agent, float speed, float acceleration, 
         float stopping_distance, float radius, float height) {
 
-        //lookRadius = CONST_LOOK_RADIUS;
         agent.speed = speed;
         agent.acceleration = acceleration;
         agent.stoppingDistance = stopping_distance;
