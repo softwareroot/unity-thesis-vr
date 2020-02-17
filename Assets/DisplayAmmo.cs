@@ -14,46 +14,53 @@ public class DisplayAmmo : MonoBehaviour {
     private int auto_rifle_mags, sniper_rifle_mags;
 
     void Start() {
-        
+        GetAutoRifleAmmoInfo();
+        GetSniperRifleAmmoInfo();
+
+        // Init text mesh
+        textMesh = GetComponent<TMPro.TextMeshProUGUI>();
+
+        // Print text
+        PrintAmmoText();
+    }
+
+    void Update() {
+
+        // Update vars
+        auto_rifle_ammo = auto_rifle_script.currentAmmo;
+        sniper_rifle_ammo = sniper_rifle_script.currentAmmo;
+        auto_rifle_mags = auto_rifle_script.mags;
+        sniper_rifle_mags = sniper_rifle_script.mags;
+
+        // Print text
+        PrintAmmoText();
+    }
+
+    private void GetAutoRifleAmmoInfo() {
         // Get automatic rifle ammo info
         auto_rifle_script = auto_rifle.GetComponent<GunScript>();
         auto_rifle_max_ammo = auto_rifle_script.maxAmmo;
         auto_rifle_ammo = auto_rifle_script.currentAmmo;
         auto_rifle_mags = auto_rifle_script.mags;
+    }
 
+    private void GetSniperRifleAmmoInfo() {
         // Get sniper rifle ammo info
         sniper_rifle_script = sniper_rifle.GetComponent<GunScript>();
         sniper_rifle_max_ammo = sniper_rifle_script.maxAmmo;
         sniper_rifle_ammo = sniper_rifle_script.currentAmmo;
         sniper_rifle_mags = sniper_rifle_script.mags;
-
-        textMesh = GetComponent<TMPro.TextMeshProUGUI>();
-
-        if (auto_rifle.gameObject.activeSelf) {
-            //Debug.Log("AMMO: " + auto_rifle_ammo + " / " + auto_rifle_max_ammo);
-            textMesh.text = "AMMO: " + auto_rifle_ammo + " / " + auto_rifle_max_ammo;
-        } else if (sniper_rifle.gameObject.activeSelf) {
-            //Debug.Log("AMMO: " + sniper_rifle_ammo + " / " + sniper_rifle_max_ammo);
-            textMesh.text = "AMMO: " + sniper_rifle_ammo + " / " + sniper_rifle_max_ammo;
-        }
     }
 
-    void Update() {
-        auto_rifle_ammo = auto_rifle_script.currentAmmo;
-        sniper_rifle_ammo = sniper_rifle_script.currentAmmo;
-
-        auto_rifle_mags = auto_rifle_script.mags;
-        sniper_rifle_mags = sniper_rifle_script.mags;
-
-        #pragma warning disable CS0618 // Type or member is obsolete
+    private void PrintAmmoText() {
+#pragma warning disable CS0618
         if (auto_rifle.gameObject.active) {
-        #pragma warning restore CS0618 // Type or member is obsolete
+#pragma warning restore CS0618
             textMesh.text = "AMMO: " + auto_rifle_ammo + " / " + auto_rifle_max_ammo + "\n" + "MAGS: " + auto_rifle_mags;
-        #pragma warning disable CS0618 // Type or member is obsolete
+#pragma warning disable CS0618
         } else if (sniper_rifle.gameObject.active) {
-        #pragma warning restore CS0618 // Type or member is obsolete
+#pragma warning restore CS0618
             textMesh.text = "AMMO: " + sniper_rifle_ammo + " / " + sniper_rifle_max_ammo + "\n" + "MAGS: " + sniper_rifle_mags;
         }
-
     }
 }
