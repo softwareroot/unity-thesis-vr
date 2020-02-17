@@ -17,7 +17,7 @@ public class DisplayAmmo : MonoBehaviour {
         GetAutoRifleAmmoInfo();
         GetSniperRifleAmmoInfo();
 
-        // Init text mesh
+        // Init text
         textMesh = GetComponent<TMPro.TextMeshProUGUI>();
 
         // Print text
