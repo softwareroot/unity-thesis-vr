@@ -3,7 +3,6 @@
 public class PlayerCtrl : MonoBehaviour {
 
     // Variables
-
     private float speed         =   7.5f;
     private float gravity       =   11.5f;
     private float jumpSpeed     =   4.5f;

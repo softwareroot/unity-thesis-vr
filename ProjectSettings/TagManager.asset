@@ -27,6 +27,7 @@ TagManager:
   - r_gun0
   - r_gun1
   - muzzle_gun_1
+  - AmmoPickup0
   layers:
   - Default
   - TransparentFX

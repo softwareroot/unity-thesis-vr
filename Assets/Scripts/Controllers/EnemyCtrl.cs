@@ -41,6 +41,8 @@ public class EnemyCtrl : MonoBehaviour {
     Transform target;
     NavMeshAgent agent;
     public ENEMY_TYPE type;
+    
+    
 
     void Start() {
         // Initialization
@@ -95,7 +97,7 @@ public class EnemyCtrl : MonoBehaviour {
             transform.GetChild(1).gameObject.SetActive(false);
             transform.GetChild(2).gameObject.SetActive(false);
             break;
-
+            
             case ENEMY_TYPE.SHOOTER:
             transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(1).gameObject.SetActive(true);
