@@ -25,15 +25,15 @@ public class DisplayAmmo : MonoBehaviour {
         sniper_rifle_script = sniper_rifle.GetComponent<GunScript>();
         sniper_rifle_max_ammo = sniper_rifle_script.maxAmmo;
         sniper_rifle_ammo = sniper_rifle_script.currentAmmo;
-
+        sniper_rifle_mags = sniper_rifle_script.mags;
 
         textMesh = GetComponent<TMPro.TextMeshProUGUI>();
 
         if (auto_rifle.gameObject.activeSelf) {
-            Debug.Log("AMMO: " + auto_rifle_ammo + " / " + auto_rifle_max_ammo);
+            //Debug.Log("AMMO: " + auto_rifle_ammo + " / " + auto_rifle_max_ammo);
             textMesh.text = "AMMO: " + auto_rifle_ammo + " / " + auto_rifle_max_ammo;
         } else if (sniper_rifle.gameObject.activeSelf) {
-            Debug.Log("AMMO: " + sniper_rifle_ammo + " / " + sniper_rifle_max_ammo);
+            //Debug.Log("AMMO: " + sniper_rifle_ammo + " / " + sniper_rifle_max_ammo);
             textMesh.text = "AMMO: " + sniper_rifle_ammo + " / " + sniper_rifle_max_ammo;
         }
     }
@@ -43,11 +43,17 @@ public class DisplayAmmo : MonoBehaviour {
         sniper_rifle_ammo = sniper_rifle_script.currentAmmo;
 
         auto_rifle_mags = auto_rifle_script.mags;
+        sniper_rifle_mags = sniper_rifle_script.mags;
 
-        if (auto_rifle.gameObject.activeSelf) {
+        #pragma warning disable CS0618 // Type or member is obsolete
+        if (auto_rifle.gameObject.active) {
+        #pragma warning restore CS0618 // Type or member is obsolete
             textMesh.text = "AMMO: " + auto_rifle_ammo + " / " + auto_rifle_max_ammo + "\n" + "MAGS: " + auto_rifle_mags;
-        } else if (sniper_rifle.gameObject.activeSelf) {
-            textMesh.text = "AMMO: " + sniper_rifle_ammo + " / " + sniper_rifle_max_ammo;
+        #pragma warning disable CS0618 // Type or member is obsolete
+        } else if (sniper_rifle.gameObject.active) {
+        #pragma warning restore CS0618 // Type or member is obsolete
+            textMesh.text = "AMMO: " + sniper_rifle_ammo + " / " + sniper_rifle_max_ammo + "\n" + "MAGS: " + sniper_rifle_mags;
         }
+
     }
 }

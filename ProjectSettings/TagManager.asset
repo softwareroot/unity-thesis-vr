@@ -24,6 +24,9 @@ TagManager:
   - enemy_runner
   - enemy_shooter
   - enemy_scratcher
+  - r_gun0
+  - r_gun1
+  - muzzle_gun_1
   layers:
   - Default
   - TransparentFX

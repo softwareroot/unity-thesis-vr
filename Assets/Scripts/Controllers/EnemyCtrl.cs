@@ -4,7 +4,6 @@ using UnityEngine.AI;
 
 public class EnemyCtrl : MonoBehaviour {
     // Enums
-
     public enum ENEMY_TYPE {
         SCRATCHER,
         RUNNER,
@@ -12,36 +11,32 @@ public class EnemyCtrl : MonoBehaviour {
     }
 
     // Constants
-
     private const float CONST_LOOK_RADIUS = 100.0f;
 
     // Scratcher constants
-    private const float SCRATCHER_SPEED = 2.0f;
-    private const float SCRATCHER_ACCELERATION = 20.0f;
-    private const float SCRATCHER_STOPPING_DISTANCE = 2.3f;
-    private const float SCRATCHER_RADIUS = 0.99f;
-    private const float SCRATCHER_HEIGHT = 2.0f;
+    private const float SCRATCHER_SPEED             =   2.0f;
+    private const float SCRATCHER_ACCELERATION      =   20.0f;
+    private const float SCRATCHER_STOPPING_DISTANCE =   2.3f;
+    private const float SCRATCHER_RADIUS            =   0.99f;
+    private const float SCRATCHER_HEIGHT            =   2.0f;
 
     // Shooter constants
-    private const float SHOOTER_SPEED = 3.0f;
-    private const float SHOOTER_ACCELERATION = 20.0f;
-    private const float SHOOTER_STOPPING_DISTANCE = 6.7f;
-    private const float SHOOTER_RADIUS = 0.99f;
-    private const float SHOOTER_HEIGHT = 2.0f;
+    private const float SHOOTER_SPEED               =   3.0f;
+    private const float SHOOTER_ACCELERATION        =   20.0f;
+    private const float SHOOTER_STOPPING_DISTANCE   =   6.7f;
+    private const float SHOOTER_RADIUS              =   0.99f;
+    private const float SHOOTER_HEIGHT              =   2.0f;
 
     // Runner constants
-    private const float RUNNER_SPEED = 10.0f;
-    private const float RUNNER_ACCELERATION = 8.0f;
-    private const float RUNNER_STOPPING_DISTANCE = 2.5f;
-    private const float RUNNER_RADIUS = 0.99f;
-    private const float RUNNER_HEIGHT = 2.0f;
+    private const float RUNNER_SPEED                =   10.0f;
+    private const float RUNNER_ACCELERATION         =   20.0f;
+    private const float RUNNER_STOPPING_DISTANCE    =   2.5f;
+    private const float RUNNER_RADIUS               =   0.99f;
+    private const float RUNNER_HEIGHT               =   2.0f;
 
     // Variables
-
     public float lookRadius;
     public int hp;
-
-    
 
     Transform target;
     NavMeshAgent agent;
