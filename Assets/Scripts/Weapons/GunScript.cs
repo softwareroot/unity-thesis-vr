@@ -143,7 +143,7 @@ public class GunScript : MonoBehaviour {
         if (mags > 0 && currentAmmo < maxAmmo) {
             mags--;
             isReloading = true;
-            Debug.Log("Reloading...");
+            Debug.Log("Reloading " + gameObject.tag);
 
             if (GUN_TYPE == 0)
                 muzzle_gun_0.SetActive(false);

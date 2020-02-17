@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public class DisplayEnemies : MonoBehaviour {
-
+	
     private TMPro.TextMeshProUGUI textMesh;
     private int totalEnemyCount;
     private GameObject[] getCountScratcher, getCountRunner, getCountShooter;
@@ -14,7 +14,7 @@ public class DisplayEnemies : MonoBehaviour {
         totalEnemyCount = getCountScratcher.Length + getCountRunner.Length + getCountShooter.Length - 3;
         textMesh = GetComponent<TMPro.TextMeshProUGUI>();
         textMesh.text = "NPC: " + totalEnemyCount;
-    }
+	}
 
     void Update() {
         getCountScratcher = GameObject.FindGameObjectsWithTag("enemy_scratcher");

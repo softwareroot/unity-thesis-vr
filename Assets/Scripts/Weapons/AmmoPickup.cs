@@ -15,6 +15,7 @@ public class AmmoPickup : MonoBehaviour {
     private void OnTriggerEnter(Collider collider) {
         if (collider.gameObject.tag == "Player") {
             gunScript.addMag();
+            Debug.Log("Picked up ammo for " + gun.tag);
             Destroy(gameObject);
         }
     }
