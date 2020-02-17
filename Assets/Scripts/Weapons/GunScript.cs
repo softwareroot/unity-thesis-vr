@@ -38,6 +38,10 @@ public class GunScript : MonoBehaviour {
     public float reloadTime;
     public Animator animatorReload;
     public int mags;
+    
+    [SerializeField] public GameObject recoil_gun1;
+    private Scope scope_script;
+
 
     public void addMag() {
         mags += 1;
@@ -46,6 +50,7 @@ public class GunScript : MonoBehaviour {
     void Start() {
         // Initiate animator object for 'scoping animations'
         animator = gameObject.GetComponentInParent<Animator>();
+        scope_script = recoil_gun1.GetComponent<Scope>();
 
         // Initiate impact effects
         impactEffectEnemy = GameObject.FindGameObjectWithTag("ie_enemy");
@@ -126,7 +131,10 @@ public class GunScript : MonoBehaviour {
                     Shoot(W_SNIPER);
                     timestamp = Time.time + timeBetweenShots;
                     StartCoroutine(WaitGun1Muzzle());
-                    Scope.isScoped = false;
+                    
+                    scope_script.OnUscoped();
+                    
+                    //Scope.isScoped = false;
                 } else {
                     if (mags > 0) {
                         StartCoroutine(Reload());
@@ -169,11 +177,12 @@ public class GunScript : MonoBehaviour {
 
     // Controlling the weapon muzzle
     IEnumerator WaitGun1Muzzle() {
-        
-        muzzle_gun_1.SetActive(true);
-        yield return new WaitForSeconds(0.15f);
-        muzzle_gun_1.SetActive(false);
-        
+
+        if (!Scope.isScoped) {
+            muzzle_gun_1.SetActive(true);
+            yield return new WaitForSeconds(0.15f);
+            muzzle_gun_1.SetActive(false);
+        }
     }
 
     void Shoot(float weapon_type) {

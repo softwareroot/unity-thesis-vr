@@ -41,6 +41,8 @@ public class EnemyCtrl : MonoBehaviour {
     Transform target;
     NavMeshAgent agent;
     public ENEMY_TYPE type;
+    
+    
 
     void Start() {
         // Initialization

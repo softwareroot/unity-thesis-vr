@@ -16,19 +16,24 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/AmmoPickup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/DisplayEnemies.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponSwitching.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Hover.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/GunScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/EnemyCtrl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player &amp; Camera/PlayerCtrl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Scope.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/DisplayEnemies.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/AmmoPickup.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/GunScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Hover.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player &amp; Camera/PlayerCtrl.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/EnemyCtrl.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponSwitching.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/GunScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Scope.cs" />
       </list>
     </option>
   </component>
@@ -41,6 +46,7 @@
   <component name="PropertiesComponent">
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="ToolWindowUnity.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="do_not_show_Android_plugin_suggestion" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -69,7 +75,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1581950570396</updated>
-      <workItem from="1581950578571" duration="2786000" />
+      <workItem from="1581950578571" duration="7877000" />
     </task>
     <servers />
   </component>
@@ -158,10 +164,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1370" height="363" key="GridCell.Tab.3.right/0.30.1920.1050/1920.0.1920.1080@1920.0.1920.1080" timestamp="1581952101494" />
-    <state x="2385" y="184" width="1159" height="712" key="SettingsEditor" timestamp="1581951829665">
+    <state x="2385" y="184" width="1159" height="712" key="SettingsEditor" timestamp="1581954023878">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2385" y="184" width="1159" height="712" key="SettingsEditor/0.30.1920.1050/1920.0.1920.1080@1920.0.1920.1080" timestamp="1581951829665" />
+    <state x="2385" y="184" width="1159" height="712" key="SettingsEditor/0.30.1920.1050/1920.0.1920.1080@1920.0.1920.1080" timestamp="1581954023878" />
     <state x="2475" y="273" key="Vcs.Push.Dialog.v2" timestamp="1581951921210">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>

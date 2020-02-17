@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Scope : MonoBehaviour {
 
@@ -12,10 +13,30 @@ public class Scope : MonoBehaviour {
     public GameObject scopeOverlay;
     public GameObject weapon;
 
+    public GameObject scope_ui;
+    [SerializeField] private GameObject sniper_gun_model;
+    private MeshRenderer[] render_sniper;
+    [SerializeField] private GameObject muzzle;
+
+
+    void Start() {
+        render_sniper = sniper_gun_model.GetComponentsInChildren<MeshRenderer>();
+
+        foreach (MeshRenderer mesh in render_sniper) {
+            mesh.enabled = true;
+        }
+    }
+    
+    
     void Update() {
-        if (Input.GetMouseButtonDown(1)  || Input.GetKeyDown(KeyCode.Joystick1Button4)) {
+        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Joystick1Button4)) {
             isScoped = !isScoped;
             animator.SetBool("Scoped", isScoped);
+            
+            if (isScoped)
+                StartCoroutine(OnScoped());
+            else
+                OnUscoped();
         }
 
         /*
@@ -25,5 +46,31 @@ public class Scope : MonoBehaviour {
             Camera.main.fieldOfView = NORMAL_SCOPED_FOV;
         }
         */
+    }
+
+    public IEnumerator OnScoped()
+    {
+        yield return new WaitForSeconds(.15f);
+        
+        foreach (MeshRenderer mesh in render_sniper) {
+            mesh.enabled = false;
+            muzzle.SetActive(false);
+        }
+
+        scope_ui.SetActive(true);
+    }
+
+    public void OnUscoped()
+    {
+        scope_ui.SetActive(false);
+        
+        if (render_sniper != null) {
+            foreach (MeshRenderer mesh in render_sniper) {
+                mesh.enabled = true;
+            }
+        }
+
+        isScoped = false;
+
     }
 }
