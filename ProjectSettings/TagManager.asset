@@ -28,6 +28,9 @@ TagManager:
   - r_gun1
   - muzzle_gun_1
   - AmmoPickup0
+  - Effect
+  - Projectile
+  - Granade
   layers:
   - Default
   - TransparentFX

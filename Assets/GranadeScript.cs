@@ -13,21 +13,20 @@ public class GranadeScript : MonoBehaviour
     public float explosiveForce = 20f;
     public float explosiveRadius = 15f;
 
+    void Start() { startTimer = 0; }
+
     void Update() {
         startTimer += Time.deltaTime;
 
-        if (startTimer >= timeDelay) {
+        if (startTimer >= timeDelay)
+        {
+            startTimer = 0;
             Explode();
         }
     }
 
     private void Explode()
     {
-        Collider[] coll = Physics.OverlapSphere(transform.position, explosiveRadius);
-
-        for (int i = 0; i < coll.Length; i++)
-        {
-            //coll[i].gameObject.GetComponent<Rigidbody>().AddExplosionForce(explosiveForce, transform.position, explosiveRadius);
-        }
+        
     }
 }
