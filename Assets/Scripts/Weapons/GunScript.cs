@@ -304,7 +304,7 @@ public class GunScript : MonoBehaviour {
             
             case W_GLANUCHER:
                 
-                recoilComponent.StartRecoil(0.075f, 0.12f, 5f);
+                recoilComponent.StartRecoil(0.075f, -0.20f, 10f);
                 
                 break;
         }
