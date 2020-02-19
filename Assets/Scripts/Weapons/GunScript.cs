@@ -109,7 +109,6 @@ public class GunScript : MonoBehaviour {
 
         if (currentAmmo <= 0 || Input.GetKeyDown(KeyCode.R)) {
             StartCoroutine(Reload());
-            return;
         }
 
         // Controlling individual weapons based on gun type
