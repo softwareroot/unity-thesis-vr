@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyCtrl : MonoBehaviour {
@@ -48,6 +47,8 @@ public class EnemyCtrl : MonoBehaviour {
         // Initialization
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
+        Debug.Log("Target pos: " + target.position);
+        
 
         //SelectRandomEnemyType();
         SetStats(type, agent);
@@ -67,6 +68,8 @@ public class EnemyCtrl : MonoBehaviour {
 
         // Remove the object if HP is less than 0
         if (hp <= 0) GameObject.Destroy(gameObject);
+        
+        Debug.Log("Target pos: " + target.position + "\nMy pos: " + transform.position + ", Distance: " + distance);
     }
 
     private void SelectRandomEnemyType() {

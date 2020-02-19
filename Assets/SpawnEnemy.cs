@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using UnityEditor.SceneManagement;
 
 public class SpawnEnemy : MonoBehaviour {
 
@@ -44,6 +45,7 @@ public class SpawnEnemy : MonoBehaviour {
 
         switch (rand) {
             case 0:
+
             enemy_prefab_parent = GameObject.FindGameObjectWithTag("enemy_runner");
             enemy_prefab_texture = GameObject.FindGameObjectWithTag("tex_runner");
             break;
