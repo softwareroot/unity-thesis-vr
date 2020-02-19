@@ -16,13 +16,14 @@ public class WeaponSwitching : MonoBehaviour {
     {
         scope_script = recoil_gun1.GetComponent<Scope>();
         SelectWeapon();
-        
     }
 
     void SelectWeapon() {
+
         int i = 0;
         
         foreach (Transform weapon in transform) {
+
             if (i == selectedWeapon)
                 weapon.gameObject.SetActive(true);
             else
