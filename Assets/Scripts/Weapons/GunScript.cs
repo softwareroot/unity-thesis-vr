@@ -5,44 +5,47 @@ using UnityEngine;
 public class GunScript : MonoBehaviour {
 
     // Variables
-    public Camera fpsCam;
-    public Transform cam;
-    public Recoil recoilComponent;
+    public Camera     fpsCam;
+    public Transform  cam;
+    public Recoil     recoilComponent;
     public GameObject impactEffectSolid;
     public GameObject impactEffectEnemy;
 
-    private Animator animator;
-    private float lastFired;
-    private float timestamp;
+    private Animator   animator;
+    private float      lastFired;
+    private float      timestamp;
     private GameObject muzzle_gun_0, muzzle_gun_1;
-    private bool isReloading = false;
+    [SerializeField] private GameObject muzzle_gun_2;
+    private bool       isReloading = false;
 
-    public float damage             =       10f;
-    public float range              =       100f;
-    public float GUN_TYPE           =       0;
-    public float timeBetweenShots   =       0.3333f;
-    private float fireRate          =       10;
+    public  float damage           =       10f;
+    public  float range            =       100f;
+    public  float GUN_TYPE         =       0;
+    public  float timeBetweenShots =       0.3333f;
+    private float fireRate         =       10;
 
     // Constants
-    public const int W_AUTOMATIC    =       0;
-    public const int W_SNIPER       =       1;
-    public const int W_GLANUCHER    =       2;
-    public const int W_FIREWEAPON   =       3;
+    public const int W_AUTOMATIC =       0;
+    public const int W_SNIPER    =       1;
+    public const int W_GLANUCHER =       2;
 
-    public const int DMG_AUTOMATIC  =       2;
-    public const int DMG_SNIPER     =       10;
+    public const int DMG_AUTOMATIC =       2;
+    public const int DMG_SNIPER    =       10;
 
     // Reloading variables
-    public int currentAmmo;
-    public int maxAmmo;
-    public float reloadTime;
+    public int      currentAmmo;
+    public int      maxAmmo;
+    public float    reloadTime;
     public Animator animatorReload;
-    public int mags;
+    public int      mags;
     
     [SerializeField] public GameObject recoil_gun1;
-    private Scope scope_script;
-
-
+    private                 Scope      scope_script;
+    
+    public GameObject granadeModel;
+    public Transform  throwFromObject;
+    public float      throwForce = 10f;
+    
     public void addMag() {
         mags += 1;
     }
@@ -76,6 +79,10 @@ public class GunScript : MonoBehaviour {
                 muzzle_gun_1 = GameObject.Find("MuzzleGun1");
                 muzzle_gun_1.SetActive(false);
             break;
+            
+            case W_GLANUCHER:
+                muzzle_gun_2.SetActive(false);
+                break;
         }
     }
 
@@ -115,7 +122,6 @@ public class GunScript : MonoBehaviour {
                 } else {
                     if (mags > 0) {
                         StartCoroutine(Reload());
-                        return;
                     }
                 }
             } else {
@@ -139,11 +145,30 @@ public class GunScript : MonoBehaviour {
                     if (mags > 0) {
                         StartCoroutine(Reload());
                     }
-                    return;
                 }
 
             }
             break;
+            
+            case W_GLANUCHER:
+
+                if (Time.time >= timestamp && (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Joystick1Button5)))
+                {
+                    if (currentAmmo > 0)
+                    {
+                        Shoot(W_GLANUCHER);
+                        timestamp = Time.time + timeBetweenShots;
+                        StartCoroutine(WaitGun2Muzzle());
+                    } else
+                    {
+                        if (mags > 0)
+                        {
+                            StartCoroutine(Reload());
+                        }
+                    }
+                }
+                
+                break;
         }
     }
 
@@ -184,6 +209,15 @@ public class GunScript : MonoBehaviour {
             muzzle_gun_1.SetActive(false);
         }
     }
+    
+    IEnumerator WaitGun2Muzzle() {
+
+        if (!Scope.isScoped) {
+            muzzle_gun_2.SetActive(true);
+            yield return new WaitForSeconds(0.15f);
+            muzzle_gun_2.SetActive(false);
+        }
+    }
 
     void Shoot(float weapon_type) {
 
@@ -192,56 +226,70 @@ public class GunScript : MonoBehaviour {
         if (weapon_type == W_SNIPER)
             animator.SetBool("Scoped", false);
 
-        RaycastHit hit;
+        if (weapon_type != W_GLANUCHER)
+        {
 
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range)) {
+            RaycastHit hit;
 
-            string hit_tag = hit.transform.gameObject.tag;
+            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+            {
 
-            switch (hit_tag) {
-                case "Enemy":
-                Instantiate(impactEffectEnemy, hit.point, Quaternion.LookRotation(hit.normal));
-                break;
+                string hit_tag = hit.transform.gameObject.tag;
 
-                case "enemy_runner":
-                Instantiate(impactEffectEnemy, hit.point, Quaternion.LookRotation(hit.normal));
-                break;
-
-                case "enemy_scratcher":
-                Instantiate(impactEffectEnemy, hit.point, Quaternion.LookRotation(hit.normal));
-                break;
-
-                case "enemy_shooter":
-                Instantiate(impactEffectEnemy, hit.point, Quaternion.LookRotation(hit.normal));
-                break;
-
-                default:
-                    Instantiate(impactEffectSolid, hit.point, Quaternion.LookRotation(hit.normal));
-                break;
-            }
-
-            // Get the gameobject from the object that was hit
-            GameObject obj = hit.collider.gameObject;
-            // Get the enemyctrl script from current object to check if it's really enemy type
-            var script = obj.GetComponent<EnemyCtrl>();
-            // Get the enemy type (SCRATCHER, SHOOTER, RUNNER)
-            //EnemyCtrl.ENEMY_TYPE enemy_type = script.type;
-            
-            // Check if has a texture attatched (if not, can't be destroyed)
-            if (obj.transform.childCount > 0) {
-                // Check if is enemy
-                if (script != null) {
-                    switch (weapon_type) {
-                        case W_AUTOMATIC:
-                            script.hp -= DMG_AUTOMATIC;
+                switch (hit_tag)
+                {
+                    case "Enemy":
+                        Instantiate(impactEffectEnemy, hit.point, Quaternion.LookRotation(hit.normal));
                         break;
 
-                        case W_SNIPER:
-                            script.hp -= DMG_SNIPER;
+                    case "enemy_runner":
+                        Instantiate(impactEffectEnemy, hit.point, Quaternion.LookRotation(hit.normal));
                         break;
+
+                    case "enemy_scratcher":
+                        Instantiate(impactEffectEnemy, hit.point, Quaternion.LookRotation(hit.normal));
+                        break;
+
+                    case "enemy_shooter":
+                        Instantiate(impactEffectEnemy, hit.point, Quaternion.LookRotation(hit.normal));
+                        break;
+
+                    default:
+                        Instantiate(impactEffectSolid, hit.point, Quaternion.LookRotation(hit.normal));
+                        break;
+                }
+
+                // Get the gameobject from the object that was hit
+                GameObject obj = hit.collider.gameObject;
+                // Get the enemyctrl script from current object to check if it's really enemy type
+                var script = obj.GetComponent<EnemyCtrl>();
+                // Get the enemy type (SCRATCHER, SHOOTER, RUNNER)
+                //EnemyCtrl.ENEMY_TYPE enemy_type = script.type;
+
+                // Check if has a texture attatched (if not, can't be destroyed)
+                if (obj.transform.childCount > 0)
+                {
+                    // Check if is enemy
+                    if (script != null)
+                    {
+                        switch (weapon_type)
+                        {
+                            case W_AUTOMATIC:
+                                script.hp -= DMG_AUTOMATIC;
+                                break;
+
+                            case W_SNIPER:
+                                script.hp -= DMG_SNIPER;
+                                break;
+                        }
                     }
                 }
             }
+        } else
+        {
+            Vector3    dir     = Vector3.Normalize(fpsCam.transform.forward);
+            GameObject granade = Instantiate(granadeModel, throwFromObject.position, throwFromObject.rotation);
+            granade.GetComponent<Rigidbody>().AddForce(dir * throwForce, ForceMode.Impulse);
         }
 
         // Weapon recoil
@@ -253,6 +301,12 @@ public class GunScript : MonoBehaviour {
             case W_SNIPER:
                 recoilComponent.StartRecoil(0.075f, 0.075f, 10f);
             break;
+            
+            case W_GLANUCHER:
+                
+                recoilComponent.StartRecoil(0.075f, 0.12f, 5f);
+                
+                break;
         }
         
     }

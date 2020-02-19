@@ -5,17 +5,18 @@ public class DisplayAmmo : MonoBehaviour {
     private TMPro.TextMeshProUGUI textMesh;
     
     [SerializeField]
-    private GameObject auto_rifle, sniper_rifle;
+    private GameObject auto_rifle, sniper_rifle, launcher_rifle;
 
 
-    private GunScript auto_rifle_script, sniper_rifle_script;
-    private int auto_rifle_ammo, sniper_rifle_ammo;
-    private int auto_rifle_max_ammo, sniper_rifle_max_ammo;
-    private int auto_rifle_mags, sniper_rifle_mags;
+    private GunScript auto_rifle_script, sniper_rifle_script, launcher_script;
+    private int auto_rifle_ammo, sniper_rifle_ammo, launcher_ammo;
+    private int auto_rifle_max_ammo, sniper_rifle_max_ammo, launcher_max_ammo;
+    private int auto_rifle_mags, sniper_rifle_mags, launcher_mags;
 
     void Start() {
         GetAutoRifleAmmoInfo();
         GetSniperRifleAmmoInfo();
+        GetLauncherRifleAmmoInfo();
 
         // Init text
         textMesh = GetComponent<TMPro.TextMeshProUGUI>();
@@ -31,6 +32,8 @@ public class DisplayAmmo : MonoBehaviour {
         sniper_rifle_ammo = sniper_rifle_script.currentAmmo;
         auto_rifle_mags = auto_rifle_script.mags;
         sniper_rifle_mags = sniper_rifle_script.mags;
+        launcher_ammo = launcher_script.currentAmmo;
+        launcher_mags = launcher_script.mags;
 
         // Print text
         PrintAmmoText();
@@ -51,6 +54,14 @@ public class DisplayAmmo : MonoBehaviour {
         sniper_rifle_ammo = sniper_rifle_script.currentAmmo;
         sniper_rifle_mags = sniper_rifle_script.mags;
     }
+    
+    private void GetLauncherRifleAmmoInfo() {
+        // Get automatic rifle ammo info
+        launcher_script   = launcher_rifle.GetComponent<GunScript>();
+        launcher_max_ammo = launcher_script.maxAmmo;
+        launcher_ammo     = launcher_script.currentAmmo;
+        launcher_mags     = launcher_script.mags;
+    }
 
     private void PrintAmmoText() {
 #pragma warning disable CS0618
@@ -61,6 +72,10 @@ public class DisplayAmmo : MonoBehaviour {
         } else if (sniper_rifle.gameObject.active) {
 #pragma warning restore CS0618
             textMesh.text = "AMMO: " + sniper_rifle_ammo + " / " + sniper_rifle_max_ammo + "\n" + "MAGS: " + sniper_rifle_mags;
+#pragma warning disable CS0618
+        } else if (launcher_rifle.gameObject.active) {
+#pragma warning restore CS0618
+            textMesh.text = "AMMO: " + launcher_ammo + " / " + launcher_max_ammo + "\n" + "MAGS: " + launcher_mags;
         }
     }
 }
