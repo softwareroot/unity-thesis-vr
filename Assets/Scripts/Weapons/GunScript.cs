@@ -60,7 +60,7 @@ public class GunScript : MonoBehaviour {
         impactEffectSolid = GameObject.FindGameObjectWithTag("ie_solid");
 
         // Set initial ammo count
-        currentAmmo = 0;
+        
 
         // Initiate and set up other variables
         switch (GUN_TYPE) {
@@ -98,6 +98,10 @@ public class GunScript : MonoBehaviour {
 
             if (GUN_TYPE == 1 && currentAmmo <= 0)
                 muzzle_gun_1.SetActive(false);
+            if (GUN_TYPE == 2 && currentAmmo <= 0)
+            {
+                muzzle_gun_2.SetActive(false);
+            }
         }
 
         if (isReloading)
@@ -122,6 +126,7 @@ public class GunScript : MonoBehaviour {
                 } else {
                     if (mags > 0) {
                         StartCoroutine(Reload());
+                        return;
                     }
                 }
             } else {
@@ -137,13 +142,11 @@ public class GunScript : MonoBehaviour {
                     Shoot(W_SNIPER);
                     timestamp = Time.time + timeBetweenShots;
                     StartCoroutine(WaitGun1Muzzle());
-                    
                     scope_script.OnUscoped();
-                    
-                    //Scope.isScoped = false;
                 } else {
                     if (mags > 0) {
                         StartCoroutine(Reload());
+                        return;
                     }
                 }
 
@@ -164,6 +167,7 @@ public class GunScript : MonoBehaviour {
                         if (mags > 0)
                         {
                             StartCoroutine(Reload());
+                            return;
                         }
                     }
                 }
@@ -183,6 +187,9 @@ public class GunScript : MonoBehaviour {
 
             if (GUN_TYPE == 1)
                 muzzle_gun_1.SetActive(false);
+            
+            if (GUN_TYPE == 2)
+                muzzle_gun_2.SetActive(false);
 
             animatorReload.SetBool("Reloading", true);
 
@@ -195,7 +202,7 @@ public class GunScript : MonoBehaviour {
         }
     }
 
-    private void OnEnable() {
+    void OnEnable() {
         isReloading = false;
         animatorReload.SetBool("Reloading", false);
     }

@@ -4,7 +4,7 @@ public class WeaponSwitching : MonoBehaviour {
 
     ////////////////////////////////////////////////////////////////////////////////////
 
-    public static int selectedWeapon = 0;
+    public static int selectedWeapon = 1;
     public static bool HAS_MACHINE_GUN = false, HAS_SNIPER_RIFLE = false, 
         HAS_GRANADE_LAUNCHER = false;
     [SerializeField] public GameObject recoil_gun1;
@@ -62,7 +62,6 @@ public class WeaponSwitching : MonoBehaviour {
         // Auto rifle
         if (selectedWeapon == 0 || selectedWeapon == 2) {
             scope_script.OnUscoped();
-            //scope_script.scope_ui.SetActive(false);
         }
     }
 }
