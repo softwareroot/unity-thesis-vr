@@ -259,6 +259,10 @@ public class GunScript : MonoBehaviour {
                     case "enemy_shooter":
                         Instantiate(impactEffectEnemy, hit.point, Quaternion.LookRotation(hit.normal));
                         break;
+                    
+                    case "Pickup0":
+                        
+                        break;
 
                     default:
                         Instantiate(impactEffectSolid, hit.point, Quaternion.LookRotation(hit.normal));

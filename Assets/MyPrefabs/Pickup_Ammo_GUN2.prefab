@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2500506156005188563}
   - component: {fileID: 2500506156005188562}
   - component: {fileID: 2500506156005188589}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,7 +418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2500506156025913524}
   - component: {fileID: 2500506156025913525}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 2500506156729482298}
   - component: {fileID: 2500506156729482293}
   - component: {fileID: 2500506156729482292}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pickup_Ammo_GUN2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

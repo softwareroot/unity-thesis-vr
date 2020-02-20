@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System;
-using UnityEditor.SceneManagement;
 
 public class SpawnEnemy : MonoBehaviour {
 
