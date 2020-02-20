@@ -23,7 +23,7 @@ public class SpawnEnemy : MonoBehaviour {
             Vector3 pos_mod = new Vector3(x_mod, y_mod, z_mod);
 
             SelectRandomEnemy();
-
+            
             Spawn(enemy_prefab_parent, pos_mod);
             Spawn(enemy_prefab_texture, pos_mod);
             
@@ -33,7 +33,6 @@ public class SpawnEnemy : MonoBehaviour {
     private void Spawn(GameObject prefab, Vector3 enemySpawnerPos) {
         if (prefab != null) {
             Vector3 position = enemySpawnerPos;
-            
             Instantiate(prefab, position, Quaternion.identity);
         }
     }
