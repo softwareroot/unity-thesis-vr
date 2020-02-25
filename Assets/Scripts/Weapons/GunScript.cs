@@ -124,6 +124,7 @@ public class GunScript : MonoBehaviour {
                     }
                 } else {
                     if (mags > 0) {
+                        
                         StartCoroutine(Reload());
                         return;
                     }
@@ -297,8 +298,8 @@ public class GunScript : MonoBehaviour {
             }
         } else
         {
-            Vector3    dir     = Vector3.Normalize(fpsCam.transform.forward);
-            GameObject granade = Instantiate(granadeModel, throwFromObject.position, throwFromObject.rotation);
+            Vector3    dir     = fpsCam.transform.forward;
+            GameObject granade = Instantiate(granadeModel, throwFromObject.position, fpsCam.transform.rotation);
             granade.GetComponent<Rigidbody>().AddForce(dir * throwForce, ForceMode.Impulse);
         }
 

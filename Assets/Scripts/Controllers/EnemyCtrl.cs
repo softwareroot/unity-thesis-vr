@@ -40,8 +40,11 @@ public class EnemyCtrl : MonoBehaviour {
     Transform target;
     NavMeshAgent agent;
     public ENEMY_TYPE type;
-    
-    
+
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
 
     void Start() {
         // Initialization

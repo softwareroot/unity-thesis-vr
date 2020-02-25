@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class GranadeScript : MonoBehaviour
@@ -44,9 +45,33 @@ public class GranadeScript : MonoBehaviour
     {
         //Debug.Log("EXPLODE!");
         activateExplosionAnimation = true;
-        // Check for nearby collisions with enemies -> kill those in range
-        
-        
+        ExplosionDamage(transform.position, 4);
+    }
+
+    private void ExplosionDamage(Vector3 center, float radius)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(center, radius);
+        int i = 0;
+
+        while (i < hitColliders.Length)
+        {
+            if (CheckForTags(hitColliders, i)) {
+                    hitColliders[i].gameObject.SendMessage("Die");
+            }
+
+            i++;
+        }
+    }
+
+    private bool CheckForTags(Collider[] colls, int index)
+    {
+        if (colls[index].gameObject.tag == "enemy_runner" || colls[index].gameObject.tag == "enemy_scratcher" ||
+            colls[index].gameObject.tag == "enemy_shooter")
+        {
+            return true;
+        }
+
+        return false;
     }
 
 }
