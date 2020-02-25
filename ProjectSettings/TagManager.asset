@@ -32,6 +32,9 @@ TagManager:
   - Projectile
   - Granade
   - Pickup0
+  - EnemySpawner1
+  - EnemySpawner2
+  - EnemySpawner3
   layers:
   - Default
   - TransparentFX
