@@ -15,10 +15,10 @@ public class WaveSpawner : MonoBehaviour
     }
 
     public Wave[] waves;
-    public int nextWave = 0;
+    private int nextWave = 0;
     public float timeBetweenWaves = 5f;
-    public float waveCountdown;
-    public float searchCountdown = 1f;
+    private float waveCountdown;
+    private float searchCountdown = 1f;
     private SpawnState state = SpawnState.COUNTING;
     public Transform[] spawnPoints;
 
