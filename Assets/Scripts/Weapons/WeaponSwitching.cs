@@ -5,7 +5,7 @@ public class WeaponSwitching : MonoBehaviour {
 
     ////////////////////////////////////////////////////////////////////////////////////
 
-    public static int selectedWeapon = 2;
+    public static int selectedWeapon = 1;
     public static bool HAS_MACHINE_GUN = false, HAS_SNIPER_RIFLE = false, 
         HAS_GRANADE_LAUNCHER = false;
     [SerializeField] public GameObject recoil_gun1;
@@ -45,22 +45,12 @@ public class WeaponSwitching : MonoBehaviour {
             i++;
         }
     }
-
-    IEnumerator PrintHasWeapons()
-    {
-        yield return new WaitForSeconds(1000f);
-    }
+    
     
     private int index = 0;
     void Update()
     {
-        StartCoroutine(PrintHasWeapons());
-        
-        
-        if (HAS_SNIPER_RIFLE || HAS_MACHINE_GUN || HAS_GRANADE_LAUNCHER)
-        {
-            hasWeapons = true;
-        }
+        if (HAS_SNIPER_RIFLE || HAS_MACHINE_GUN || HAS_GRANADE_LAUNCHER) { hasWeapons = true; }
 
         if (hasWeapons)
         {
@@ -84,10 +74,7 @@ public class WeaponSwitching : MonoBehaviour {
             }
             
             // Auto rifle
-            if (selectedWeapon == 0 || selectedWeapon == 2)
-            {
-                scope_script.OnUscoped();
-            }
+            if (selectedWeapon == 0 || selectedWeapon == 2) { scope_script.OnUscoped(); }
         }
     }
 

@@ -73,7 +73,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void WaveCompleted()
     {
-        Debug.Log("Wave completed!");
+        //Debug.Log("Wave completed!");
 
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
@@ -81,7 +81,7 @@ public class WaveSpawner : MonoBehaviour
         if (nextWave + 1 > waves.Length - 1)
         {
             nextWave = 0;
-            Debug.Log("Completed all waves! Looping...");
+            //Debug.Log("Completed all waves! Looping...");
             // In future make a game end here after 10 waves.
             // For presentation purposes, set it to a lower number like 3 || 4.
         } else
@@ -108,7 +108,7 @@ public class WaveSpawner : MonoBehaviour
 
     private IEnumerator SpawnWave(Wave _wave)
     {
-        Debug.Log("Spawning wave: " + _wave.name);
+        //Debug.Log("Spawning wave: " + _wave.name);
         state = SpawnState.SPAWNING;
       
         // Po druhej wave sa spawne sniperka
@@ -164,7 +164,7 @@ public class WaveSpawner : MonoBehaviour
     private void Spawn(Transform _enemy)
     {
         // Spawn enemy
-        Debug.Log("Spawning enemy: " + _enemy.name);
+        //Debug.Log("Spawning enemy: " + _enemy.name);
 
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
         Instantiate(_enemy, _sp.position, _sp.rotation);

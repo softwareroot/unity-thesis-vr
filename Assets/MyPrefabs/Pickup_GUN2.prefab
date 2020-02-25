@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8132377990885723124}
   - component: {fileID: 8132377990885723125}
   - component: {fileID: 8132377990885723130}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 8132377990947603926}
   - component: {fileID: 8132377990947603927}
   - component: {fileID: 8132377990947603924}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pipe (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2562,7 +2562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8132377990997306791}
   - component: {fileID: 8132377990997306790}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2655,7 +2655,7 @@ GameObject:
   - component: {fileID: 8132377991132822854}
   - component: {fileID: 8132377991132822855}
   - component: {fileID: 8132377991132822852}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pickup_GUN2
   m_TagString: col_gun2
   m_Icon: {fileID: 0}
@@ -2734,7 +2734,7 @@ GameObject:
   - component: {fileID: 8132377991171753477}
   - component: {fileID: 8132377991171753482}
   - component: {fileID: 8132377991171753483}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3125,7 +3125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8132377991212752638}
   - component: {fileID: 8132377991212752633}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point Light (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3220,7 +3220,7 @@ GameObject:
   - component: {fileID: 8132377991300027717}
   - component: {fileID: 8132377991300027722}
   - component: {fileID: 8132377991300027723}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3615,7 +3615,7 @@ GameObject:
   - component: {fileID: 8132377991313627917}
   - component: {fileID: 8132377991313628018}
   - component: {fileID: 8132377991313628019}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4010,7 +4010,7 @@ GameObject:
   - component: {fileID: 8132377991551242856}
   - component: {fileID: 8132377991551242857}
   - component: {fileID: 8132377991551242862}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pipe (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6165,7 +6165,7 @@ GameObject:
   - component: {fileID: 8132377991563029367}
   - component: {fileID: 8132377991563029364}
   - component: {fileID: 8132377991563029370}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Gun3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6261,7 +6261,7 @@ GameObject:
   - component: {fileID: 8132377991991518511}
   - component: {fileID: 8132377991991518508}
   - component: {fileID: 8132377991991518509}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8414,7 +8414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8132377992061789180}
   - component: {fileID: 8132377992061789183}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8509,7 +8509,7 @@ GameObject:
   - component: {fileID: 8132377992386621403}
   - component: {fileID: 8132377992386621400}
   - component: {fileID: 8132377992386621401}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pipe (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10666,7 +10666,7 @@ GameObject:
   - component: {fileID: 8132377992574808581}
   - component: {fileID: 8132377992574808586}
   - component: {fileID: 8132377992574808587}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pipe (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12819,7 +12819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8132377992684001496}
   - component: {fileID: 8132377992684001499}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point Light (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12914,7 +12914,7 @@ GameObject:
   - component: {fileID: 8132377992795866788}
   - component: {fileID: 8132377992795866789}
   - component: {fileID: 8132377992795866794}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pipe (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

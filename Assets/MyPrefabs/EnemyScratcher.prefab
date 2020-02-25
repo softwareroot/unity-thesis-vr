@@ -317,6 +317,12 @@ MonoBehaviour:
   lookRadius: 1000
   hp: 0
   type: 0
+  ammo_pickup_0: {fileID: 1691513148237507803, guid: 9b96674e03e4cab4bb5f23d19f62d606,
+    type: 3}
+  ammo_pickup_1: {fileID: 8639405358374380717, guid: 2b605de8acd0cad418ada731f5c80ce5,
+    type: 3}
+  ammo_pickup_2: {fileID: 2500506156729482295, guid: 6df0fb36e73d385489d07daa0caa38a3,
+    type: 3}
 --- !u!212 &7589878527680466410
 SpriteRenderer:
   m_ObjectHideFlags: 0

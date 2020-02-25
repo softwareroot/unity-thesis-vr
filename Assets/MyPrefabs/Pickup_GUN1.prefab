@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5280187733291452962}
   - component: {fileID: 5280187733291452965}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point Light (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 5280187733295724255}
   - component: {fileID: 5280187733295724252}
   - component: {fileID: 5280187733295724253}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1758,7 +1758,7 @@ GameObject:
   - component: {fileID: 5280187733348614687}
   - component: {fileID: 5280187733348614684}
   - component: {fileID: 5280187733348614685}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2149,7 +2149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5280187733569721491}
   - component: {fileID: 5280187733569721490}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point Light (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2244,7 +2244,7 @@ GameObject:
   - component: {fileID: 5280187733701015028}
   - component: {fileID: 5280187733701015029}
   - component: {fileID: 5280187733701015026}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3319,7 +3319,7 @@ GameObject:
   - component: {fileID: 5280187734201099480}
   - component: {fileID: 5280187734201099481}
   - component: {fileID: 5280187734201099478}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3712,7 +3712,7 @@ GameObject:
   - component: {fileID: 5280187734348196927}
   - component: {fileID: 5280187734348196926}
   - component: {fileID: 5280187734348196865}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pickup_GUN1
   m_TagString: col_gun1
   m_Icon: {fileID: 0}
@@ -3791,7 +3791,7 @@ GameObject:
   - component: {fileID: 5280187734464214394}
   - component: {fileID: 5280187734464214395}
   - component: {fileID: 5280187734464214392}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4850,7 +4850,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5280187734927056500}
   - component: {fileID: 5280187734927056503}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point Light (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4940,7 +4940,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5280187735082678365}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SniperModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4976,7 +4976,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5280187735188850302}
   - component: {fileID: 5280187735188850241}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point Light (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

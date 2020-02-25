@@ -41,10 +41,9 @@ public class EnemyCtrl : MonoBehaviour {
     NavMeshAgent agent;
     public ENEMY_TYPE type;
 
-    private void Die()
-    {
-        Destroy(gameObject);
-    }
+    private void Die() { hp -= 150; }
+
+    public GameObject ammo_pickup_0, ammo_pickup_1, ammo_pickup_2;
 
     void Start() {
         // Initialization
@@ -70,7 +69,27 @@ public class EnemyCtrl : MonoBehaviour {
         }
 
         // Remove the object if HP is less than 0
-        if (hp <= 0) GameObject.Destroy(gameObject);
+        if (hp <= 0)
+        {
+            float x = transform.position.x;
+            float y = transform.position.y + 0.5f;
+            float z = transform.position.z - 0.8f;
+            Vector3 spawnPos = new Vector3(x, y, z);
+            
+            int randomNumber = Random.Range(0, 3);
+            
+            if (randomNumber == 0)
+                Instantiate(ammo_pickup_0, spawnPos, transform.rotation);
+            
+            if (randomNumber == 1)
+                Instantiate(ammo_pickup_1, spawnPos, transform.rotation);
+            
+            if (randomNumber == 2)
+                Instantiate(ammo_pickup_2, spawnPos, transform.rotation);
+
+            
+            Destroy(gameObject);
+        }
         
         //Debug.Log("Target pos: " + target.position + "\nMy pos: " + transform.position + ", Distance: " + distance);
     }
