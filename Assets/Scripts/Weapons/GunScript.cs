@@ -49,6 +49,7 @@ public class GunScript : MonoBehaviour {
     public void addMag() {
         mags += 1;
     }
+    //Input.GetButtonDown("JoyButton3")
 
     void Start() {
         // Initiate animator object for 'scoping animations'

@@ -48,10 +48,11 @@ public class WeaponSwitching : MonoBehaviour {
 
     IEnumerator PrintHasWeapons()
     {
-        //Debug.Log("Has Weapons:" + hasWeapons + "\nHas AK: " + HAS_MACHINE_GUN);
         yield return new WaitForSeconds(1000f);
     }
-    
+
+
+    private int index = 0;
     void Update()
     {
         StartCoroutine(PrintHasWeapons());
@@ -65,26 +66,20 @@ public class WeaponSwitching : MonoBehaviour {
         if (hasWeapons)
         {
             int previousSelectedWeapon = selectedWeapon;
+
+
+            if (Input.GetKeyDown(KeyCode.B)) { IncreaseScroll(); }
+            if (Input.GetAxis("Mouse ScrollWheel") < 0f) { IncreaseScroll(); }
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f) { DecreaseScroll(); }
+
             
-            /*
-            if (Input.GetButtonDown("JoyButton3"))
+            if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetAxis("Mouse ScrollWheel") > 0f)
             {
-                if (selectedWeapon <= 0) selectedWeapon = transform.childCount - 1;
-                else selectedWeapon--;
+                if (index == 0 && HAS_MACHINE_GUN) { selectedWeapon = 0; }
+                if (index == 1 && HAS_SNIPER_RIFLE) { selectedWeapon = 1; }
+                if (index == 2 && HAS_GRANADE_LAUNCHER) { selectedWeapon = 2; }
             }
-
-            if (Input.GetAxis("Mouse ScrollWheel") < 0f)
-            {
-                if (selectedWeapon >= transform.childCount - 1) selectedWeapon = 0;
-                else selectedWeapon++;
-            }
-
-            if (Input.GetAxis("Mouse ScrollWheel") > 0f)
-            {
-                if (selectedWeapon <= 0) selectedWeapon = transform.childCount - 1;
-                else selectedWeapon--;
-            }
-            */
+            
 
             if (Input.GetKeyDown(KeyCode.Alpha1) && HAS_MACHINE_GUN) selectedWeapon = 0;
             if (Input.GetKeyDown(KeyCode.Alpha2) && HAS_SNIPER_RIFLE) selectedWeapon = 1;
@@ -96,6 +91,106 @@ public class WeaponSwitching : MonoBehaviour {
             {
                 scope_script.OnUscoped();
             }
+        }
+    }
+
+    private void DecreaseScroll()
+    {
+        if (HAS_MACHINE_GUN && HAS_SNIPER_RIFLE && HAS_GRANADE_LAUNCHER) {
+                
+            if (index <= 0) index = transform.childCount - 1;
+            else index--;
+
+            if (index == 0 && HAS_MACHINE_GUN)
+            {
+                selectedWeapon = 0;
+            }
+
+            if (index == 1 && HAS_SNIPER_RIFLE)
+            {
+                selectedWeapon = 1;
+            }
+
+            if (index == 2 && HAS_GRANADE_LAUNCHER)
+            {
+                selectedWeapon = 2;
+            }
+        } else if (HAS_MACHINE_GUN && HAS_SNIPER_RIFLE)
+        {
+            if (index <= 0) index = transform.childCount - 2;
+            else index--;
+
+            if (index == 0 && HAS_MACHINE_GUN)
+            {
+                selectedWeapon = 0;
+            }
+
+            if (index == 1 && HAS_SNIPER_RIFLE)
+            {
+                selectedWeapon = 1;
+            }
+                    
+        } else
+        {
+            if (index <= 0) index = transform.childCount - 3;
+            else index--;
+
+            if (index == 0 && HAS_MACHINE_GUN)
+            {
+                selectedWeapon = 0;
+            }
+                    
+        }
+        
+        
+    }
+
+    private void IncreaseScroll()
+    {
+        if (HAS_MACHINE_GUN && HAS_SNIPER_RIFLE && HAS_GRANADE_LAUNCHER) {
+                
+            if (index >= transform.childCount - 1) index = 0;
+            else index++;
+
+            if (index == 0 && HAS_MACHINE_GUN)
+            {
+                selectedWeapon = 0;
+            }
+
+            if (index == 1 && HAS_SNIPER_RIFLE)
+            {
+                selectedWeapon = 1;
+            }
+
+            if (index == 2 && HAS_GRANADE_LAUNCHER)
+            {
+                selectedWeapon = 2;
+            }
+        } else if (HAS_MACHINE_GUN && HAS_SNIPER_RIFLE)
+        {
+            if (index >= transform.childCount - 2) index = 0;
+            else index++;
+
+            if (index == 0 && HAS_MACHINE_GUN)
+            {
+                selectedWeapon = 0;
+            }
+
+            if (index == 1 && HAS_SNIPER_RIFLE)
+            {
+                selectedWeapon = 1;
+            }
+                    
+        } else
+        {
+            if (index >= transform.childCount - 3) index = 0;
+            else index++;
+
+            if (index == 0 && HAS_MACHINE_GUN)
+            {
+                selectedWeapon = 0;
+            }
+                    
         }
     }
 }
