@@ -9,8 +9,8 @@ public class WaveSpawner : MonoBehaviour
     public class Wave
     {
         public string name;
-        public Transform enemy;
-        public int count;
+        public Transform enemy_runner, enemy_shooter, enemy_scratcher;
+        public int count_runner, count_shooter, count_scratcher;
         public float rate;
     }
 
@@ -86,7 +86,9 @@ public class WaveSpawner : MonoBehaviour
         if (searchCountdown <= 0)
         {
             searchCountdown = 1f;
-            if (GameObject.FindGameObjectWithTag("enemy_scratcher") == null)
+            if (GameObject.FindGameObjectWithTag("enemy_scratcher") == null && 
+                GameObject.FindGameObjectWithTag("enemy_runner") == null && 
+                GameObject.FindGameObjectWithTag("enemy_shooter") == null)
             {
                 return false;
             }
@@ -96,13 +98,25 @@ public class WaveSpawner : MonoBehaviour
 
     private IEnumerator SpawnWave(Wave _wave)
     {
-        Debug.Log("Spawning wave" + _wave.name);
+        Debug.Log("Spawning wave: " + _wave.name);
         state = SpawnState.SPAWNING;
         
         // Spawn enemy
-        for (int i = 0; i < _wave.count; i++)
+        for (int i = 0; i < _wave.count_runner; i++)
         {
-            Spawn(_wave.enemy);
+            Spawn(_wave.enemy_runner);
+            yield return new WaitForSeconds(1.0f / _wave.rate);
+        }
+        
+        for (int i = 0; i < _wave.count_shooter; i++)
+        {
+            Spawn(_wave.enemy_shooter);
+            yield return new WaitForSeconds(1.0f / _wave.rate);
+        }
+        
+        for (int i = 0; i < _wave.count_scratcher; i++)
+        {
+            Spawn(_wave.enemy_scratcher);
             yield return new WaitForSeconds(1.0f / _wave.rate);
         }
 
