@@ -10,7 +10,7 @@ public class GranadeScript : MonoBehaviour
     public float timeDelay = 2f;
     private float startTimer;
     [SerializeField] private float lifetime;
-
+    
     public int damage = 10;
     public float explosiveForce = 20f;
     public float explosiveRadius = 15f;
@@ -45,7 +45,7 @@ public class GranadeScript : MonoBehaviour
     {
         //Debug.Log("EXPLODE!");
         activateExplosionAnimation = true;
-        ExplosionDamage(transform.position, 4);
+        ExplosionDamage(transform.position, explosiveRadius);
     }
 
     private void ExplosionDamage(Vector3 center, float radius)
@@ -56,7 +56,8 @@ public class GranadeScript : MonoBehaviour
         while (i < hitColliders.Length)
         {
             if (CheckForTags(hitColliders, i)) {
-                    hitColliders[i].gameObject.SendMessage("Die");
+                // Calls the die function inside EnemyCtrl script (Enemy object)
+                hitColliders[i].gameObject.SendMessage("Die");
             }
 
             i++;

@@ -113,7 +113,7 @@ MonoBehaviour:
   lifetime: 5
   damage: 10
   explosiveForce: 20
-  explosiveRadius: 15
+  explosiveRadius: 5
   fireball: {fileID: 8778971830162145841}
 --- !u!54 &4112808503696711980
 Rigidbody:
