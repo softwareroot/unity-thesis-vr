@@ -50,8 +50,7 @@ public class WeaponSwitching : MonoBehaviour {
     {
         yield return new WaitForSeconds(1000f);
     }
-
-
+    
     private int index = 0;
     void Update()
     {
@@ -66,13 +65,17 @@ public class WeaponSwitching : MonoBehaviour {
         if (hasWeapons)
         {
             int previousSelectedWeapon = selectedWeapon;
-
-
-            if (Input.GetKeyDown(KeyCode.B)) { IncreaseScroll(); }
-            if (Input.GetAxis("Mouse ScrollWheel") < 0f) { IncreaseScroll(); }
-            if (Input.GetAxis("Mouse ScrollWheel") > 0f) { DecreaseScroll(); }
-
             
+            // Controller weapon switching
+            ControllerWeaponSwitch();
+
+            // Mouse scroll wheel weapon switching
+            ScrollWheelWeaponSwitch();
+
+            // Numpad weapon switching
+            NumpadWeaponSwitch();
+            
+            if (previousSelectedWeapon != selectedWeapon) SelectWeapon();
             if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetAxis("Mouse ScrollWheel") > 0f)
             {
                 if (index == 0 && HAS_MACHINE_GUN) { selectedWeapon = 0; }
@@ -80,12 +83,6 @@ public class WeaponSwitching : MonoBehaviour {
                 if (index == 2 && HAS_GRANADE_LAUNCHER) { selectedWeapon = 2; }
             }
             
-
-            if (Input.GetKeyDown(KeyCode.Alpha1) && HAS_MACHINE_GUN) selectedWeapon = 0;
-            if (Input.GetKeyDown(KeyCode.Alpha2) && HAS_SNIPER_RIFLE) selectedWeapon = 1;
-            if (Input.GetKeyDown(KeyCode.Alpha3) && HAS_GRANADE_LAUNCHER) selectedWeapon = 2;
-            if (previousSelectedWeapon != selectedWeapon) SelectWeapon();
-
             // Auto rifle
             if (selectedWeapon == 0 || selectedWeapon == 2)
             {
@@ -94,6 +91,25 @@ public class WeaponSwitching : MonoBehaviour {
         }
     }
 
+    private void ControllerWeaponSwitch()
+    {
+        if (Input.GetButtonDown("JoyButton3")) { IncreaseScroll(); }
+    }
+
+    private void ScrollWheelWeaponSwitch()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f) { IncreaseScroll(); }
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f) { DecreaseScroll(); }
+    }
+
+    private void NumpadWeaponSwitch()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1) && HAS_MACHINE_GUN) selectedWeapon      = 0;
+        if (Input.GetKeyDown(KeyCode.Alpha2) && HAS_SNIPER_RIFLE) selectedWeapon     = 1;
+        if (Input.GetKeyDown(KeyCode.Alpha3) && HAS_GRANADE_LAUNCHER) selectedWeapon = 2;
+    }
+
+    
     private void DecreaseScroll()
     {
         if (HAS_MACHINE_GUN && HAS_SNIPER_RIFLE && HAS_GRANADE_LAUNCHER) {
