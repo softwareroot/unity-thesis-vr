@@ -5,7 +5,7 @@ public class WeaponSwitching : MonoBehaviour {
 
     ////////////////////////////////////////////////////////////////////////////////////
 
-    public static int selectedWeapon;
+    public static int selectedWeapon = 2;
     public static bool HAS_MACHINE_GUN = false, HAS_SNIPER_RIFLE = false, 
         HAS_GRANADE_LAUNCHER = false;
     [SerializeField] public GameObject recoil_gun1;

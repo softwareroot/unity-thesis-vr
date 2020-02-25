@@ -22,7 +22,7 @@ public class WaveSpawner : MonoBehaviour
     private SpawnState state = SpawnState.COUNTING;
     public Transform[] spawnPoints;
     public Transform weapon1_pickup_spawn, weapon2_pickup_spawn;
-    public GameObject weapon_pickup1, weapon_pickup2;
+    public GameObject weapon_pickup1, weapon_pickup2, weapon_pickup0;
 
     void Start()
     {
@@ -49,6 +49,11 @@ public class WaveSpawner : MonoBehaviour
             {
                 return;
             }
+        }
+
+        if (state == SpawnState.COUNTING)
+        {
+            
         }
         
         if (waveCountdown <= 0)
@@ -105,6 +110,29 @@ public class WaveSpawner : MonoBehaviour
     {
         Debug.Log("Spawning wave: " + _wave.name);
         state = SpawnState.SPAWNING;
+      
+        // Po druhej wave sa spawne sniperka
+        if (nextWave == 1)
+        {
+            float   x        = weapon1_pickup_spawn.position.x;
+            float   y        = weapon1_pickup_spawn.position.y - 1;
+            float   z        = weapon1_pickup_spawn.position.z;
+            Vector3 spawnPos = new Vector3(x, y, z);
+            
+            Instantiate(weapon_pickup1, spawnPos, Quaternion.Euler(0, 0, 0));
+            weapon1_pickup_spawn.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        }
+        
+        // Po stvrtej vlne sa spawne granatomet
+        if (nextWave == 2)
+        {
+            float   x        = weapon2_pickup_spawn.position.x;
+            float   y        = weapon2_pickup_spawn.position.y - 0.65f;
+            float   z        = weapon2_pickup_spawn.position.z;
+            Vector3 spawnPos = new Vector3(x, y, z);
+            Instantiate(weapon_pickup2, spawnPos, Quaternion.Euler(0, 0, 0));
+            weapon2_pickup_spawn.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        }
         
         // Spawn enemy
         for (int i = 0; i < _wave.count_runner; i++)
@@ -125,30 +153,10 @@ public class WaveSpawner : MonoBehaviour
             yield return new WaitForSeconds(1.0f / _wave.rate);
         }
         
-        // Po druhej wave sa spawne sniperka
-        if (nextWave == 1)
-        {
-            float x = weapon1_pickup_spawn.position.x;
-            float y = weapon1_pickup_spawn.position.y - 1;
-            float z = weapon1_pickup_spawn.position.z;
-            Vector3 spawnPos = new Vector3(x, y, z);
-            
-            Instantiate(weapon_pickup1, spawnPos, Quaternion.Euler(0, 90f, 0));
-            weapon1_pickup_spawn.gameObject.GetComponent<MeshRenderer>().enabled = false;
-        }
         
-        // Po stvrtej vlne sa spawne granatomet
-        if (nextWave == 2)
-        {
-            float   x        = weapon2_pickup_spawn.position.x;
-            float   y        = weapon2_pickup_spawn.position.y - 1;
-            float   z        = weapon2_pickup_spawn.position.z;
-            Vector3 spawnPos = new Vector3(x, y, z);
-            Instantiate(weapon_pickup2, spawnPos, Quaternion.Euler(0, 90f, 0));
-            weapon2_pickup_spawn.gameObject.GetComponent<MeshRenderer>().enabled = false;
-        }
-
+        
         state = SpawnState.WAITING;
+        
         
         yield break;
     }
