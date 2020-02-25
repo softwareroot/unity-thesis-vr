@@ -1,21 +1,34 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class WeaponSwitching : MonoBehaviour {
 
     ////////////////////////////////////////////////////////////////////////////////////
 
-    public static int selectedWeapon = 1;
+    public static int selectedWeapon;
     public static bool HAS_MACHINE_GUN = false, HAS_SNIPER_RIFLE = false, 
         HAS_GRANADE_LAUNCHER = false;
     [SerializeField] public GameObject recoil_gun1;
     private Scope scope_script;
+    private bool hasWeapons;
     
     ////////////////////////////////////////////////////////////////////////////////////
 
     void Start()
     {
+        if (!HAS_MACHINE_GUN && !HAS_SNIPER_RIFLE && !HAS_GRANADE_LAUNCHER)
+        {
+            hasWeapons = false;
+        } else
+        {
+            hasWeapons = true;
+        }
+        
         scope_script = recoil_gun1.GetComponent<Scope>();
-        SelectWeapon();
+        
+        if (hasWeapons) {
+            SelectWeapon();
+        }
     }
 
     void SelectWeapon() {
@@ -33,36 +46,56 @@ public class WeaponSwitching : MonoBehaviour {
         }
     }
 
+    IEnumerator PrintHasWeapons()
+    {
+        //Debug.Log("Has Weapons:" + hasWeapons + "\nHas AK: " + HAS_MACHINE_GUN);
+        yield return new WaitForSeconds(1000f);
+    }
+    
     void Update()
     {
-        int previousSelectedWeapon = selectedWeapon;
-
-        if (Input.GetButtonDown("JoyButton3"))
+        StartCoroutine(PrintHasWeapons());
+        
+        
+        if (HAS_SNIPER_RIFLE || HAS_MACHINE_GUN || HAS_GRANADE_LAUNCHER)
         {
-            if (selectedWeapon <= 0) selectedWeapon = transform.childCount - 1;
-            else selectedWeapon--;
+            hasWeapons = true;
         }
 
-        if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+        if (hasWeapons)
         {
-            if (selectedWeapon >= transform.childCount - 1) selectedWeapon = 0;
-            else selectedWeapon++;
-        }
+            int previousSelectedWeapon = selectedWeapon;
+            
+            /*
+            if (Input.GetButtonDown("JoyButton3"))
+            {
+                if (selectedWeapon <= 0) selectedWeapon = transform.childCount - 1;
+                else selectedWeapon--;
+            }
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
-        {
-            if (selectedWeapon <= 0) selectedWeapon = transform.childCount - 1;
-            else selectedWeapon--;
-        }
+            if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+            {
+                if (selectedWeapon >= transform.childCount - 1) selectedWeapon = 0;
+                else selectedWeapon++;
+            }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) selectedWeapon = 0;
-        if (Input.GetKeyDown(KeyCode.Alpha2)) selectedWeapon = 1;
-        if (Input.GetKeyDown(KeyCode.Alpha3)) selectedWeapon = 2;
-        if (previousSelectedWeapon != selectedWeapon) SelectWeapon();
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+            {
+                if (selectedWeapon <= 0) selectedWeapon = transform.childCount - 1;
+                else selectedWeapon--;
+            }
+            */
 
-        // Auto rifle
-        if (selectedWeapon == 0 || selectedWeapon == 2) {
-            scope_script.OnUscoped();
+            if (Input.GetKeyDown(KeyCode.Alpha1) && HAS_MACHINE_GUN) selectedWeapon = 0;
+            if (Input.GetKeyDown(KeyCode.Alpha2) && HAS_SNIPER_RIFLE) selectedWeapon = 1;
+            if (Input.GetKeyDown(KeyCode.Alpha3) && HAS_GRANADE_LAUNCHER) selectedWeapon = 2;
+            if (previousSelectedWeapon != selectedWeapon) SelectWeapon();
+
+            // Auto rifle
+            if (selectedWeapon == 0 || selectedWeapon == 2)
+            {
+                scope_script.OnUscoped();
+            }
         }
     }
 }

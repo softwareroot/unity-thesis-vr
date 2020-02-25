@@ -35,6 +35,11 @@ TagManager:
   - EnemySpawner1
   - EnemySpawner2
   - EnemySpawner3
+  - col_gun0
+  - col_gun1
+  - col_gun2
+  - gun_2
+  - Gun2
   layers:
   - Default
   - TransparentFX

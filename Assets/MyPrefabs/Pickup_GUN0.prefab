@@ -3205,7 +3205,7 @@ GameObject:
   - component: {fileID: 2696211759665111764}
   m_Layer: 0
   m_Name: Pickup_GUN0
-  m_TagString: Untagged
+  m_TagString: col_gun0
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
