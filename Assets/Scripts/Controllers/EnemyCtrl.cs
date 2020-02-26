@@ -27,11 +27,12 @@ public class EnemyCtrl : MonoBehaviour {
     private const float SHOOTER_HEIGHT              =   2.0f;
 
     // Runner constants
+    private const float RUNNER_BASE_OFFSET          =   0.26f;
     private const float RUNNER_SPEED                =   4.0f;
     private const float RUNNER_ACCELERATION         =   20.0f;
     private const float RUNNER_STOPPING_DISTANCE    =   5.5f;
-    private const float RUNNER_RADIUS               =   0.99f;
-    private const float RUNNER_HEIGHT               =   2.0f;
+    private const float RUNNER_RADIUS               =   0.2f;
+    private const float RUNNER_HEIGHT               =   0.54f;
 
     // Variables
     public float lookRadius;
@@ -56,16 +57,21 @@ public class EnemyCtrl : MonoBehaviour {
         SetStats(type, agent);
         SelectTexture(type);
         //agent.updateRotation = false;
+        
+        if (type == ENEMY_TYPE.RUNNER)
+            agent.baseOffset = RUNNER_BASE_OFFSET;
     }
 
     void Update() {
-        // Calculate the distance to the target (player)
-        float distance = Vector3.Distance(target.position, transform.position);
+        if (agent.isActiveAndEnabled) {
+            // Calculate the distance to the target (player)
+            float distance = Vector3.Distance(target.position, transform.position);
 
-        // Start moving towards the player using agent logic
-        if (distance <= lookRadius) {
-            agent.SetDestination(target.position);
-            if (distance <= agent.stoppingDistance) FaceTarget();
+            // Start moving towards the player using agent logic
+            if (distance <= lookRadius) {
+                agent.SetDestination(target.position);
+                if (distance <= agent.stoppingDistance) FaceTarget();
+            }
         }
 
         // Remove the object if HP is less than 0

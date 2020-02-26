@@ -56,13 +56,9 @@ public class WeaponSwitching : MonoBehaviour {
         {
             int previousSelectedWeapon = selectedWeapon;
             
-            // Controller weapon switching
+            // Different types of switching
             ControllerWeaponSwitch();
-
-            // Mouse scroll wheel weapon switching
             ScrollWheelWeaponSwitch();
-
-            // Numpad weapon switching
             NumpadWeaponSwitch();
             
             if (previousSelectedWeapon != selectedWeapon) SelectWeapon();
