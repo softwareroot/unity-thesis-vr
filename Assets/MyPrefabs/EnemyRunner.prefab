@@ -43,7 +43,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658978802282414494}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.2
   m_Speed: 2
@@ -55,7 +55,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.54
-  m_BaseOffset: 0.26
+  m_BaseOffset: 0.35
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!136 &658978802282414490
@@ -69,7 +69,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.2
-  m_Height: 0.56
+  m_Height: 0.74
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &658978802282414493
@@ -103,11 +103,11 @@ MonoBehaviour:
   lookRadius: 1000
   hp: 0
   type: 1
-  ammo_pickup_0: {fileID: 1691513148237507803, guid: 9b96674e03e4cab4bb5f23d19f62d606,
+  ammo_pickup_0: {fileID: 4536226822859165503, guid: fea25a87db92e664eadff4187c391ce2,
     type: 3}
-  ammo_pickup_1: {fileID: 8639405358374380717, guid: 2b605de8acd0cad418ada731f5c80ce5,
+  ammo_pickup_1: {fileID: 7312315618572683692, guid: 0ca9bdb2a504e6d4b882021a7a2a5273,
     type: 3}
-  ammo_pickup_2: {fileID: 2500506156729482295, guid: 6df0fb36e73d385489d07daa0caa38a3,
+  ammo_pickup_2: {fileID: 9190890584478468074, guid: 6674430f09dcb58478fe494697cc261a,
     type: 3}
 --- !u!212 &658978802282414495
 SpriteRenderer:
@@ -147,7 +147,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c70ec13af76350345929cff25c3e81a9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e2f7b688e8f746418cc1d1f7210e7b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

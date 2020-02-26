@@ -211,11 +211,11 @@ MonoBehaviour:
   lookRadius: 1000
   hp: 0
   type: 2
-  ammo_pickup_0: {fileID: 1691513148237507803, guid: 9b96674e03e4cab4bb5f23d19f62d606,
+  ammo_pickup_0: {fileID: 4536226822859165503, guid: fea25a87db92e664eadff4187c391ce2,
     type: 3}
-  ammo_pickup_1: {fileID: 8639405358374380717, guid: 2b605de8acd0cad418ada731f5c80ce5,
+  ammo_pickup_1: {fileID: 7312315618572683692, guid: 0ca9bdb2a504e6d4b882021a7a2a5273,
     type: 3}
-  ammo_pickup_2: {fileID: 2500506156729482295, guid: 6df0fb36e73d385489d07daa0caa38a3,
+  ammo_pickup_2: {fileID: 9190890584478468074, guid: 6674430f09dcb58478fe494697cc261a,
     type: 3}
 --- !u!212 &8570164431657041843
 SpriteRenderer:

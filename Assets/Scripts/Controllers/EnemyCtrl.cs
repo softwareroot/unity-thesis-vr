@@ -78,8 +78,8 @@ public class EnemyCtrl : MonoBehaviour {
         if (hp <= 0)
         {
             float x = transform.position.x;
-            float y = transform.position.y + 0.5f;
-            float z = transform.position.z - 0.8f;
+            float y = transform.position.y;
+            float z = transform.position.z ;
             Vector3 spawnPos = new Vector3(x, y, z);
             
             int randomNumber = Random.Range(0, 3);
@@ -124,22 +124,10 @@ public class EnemyCtrl : MonoBehaviour {
 
     private void SelectTexture(ENEMY_TYPE type) {
         switch (type) {
-            case ENEMY_TYPE.SCRATCHER:
-            transform.GetChild(0).gameObject.SetActive(true);
-            transform.GetChild(1).gameObject.SetActive(false);
-            transform.GetChild(2).gameObject.SetActive(false);
-            break;
-            
             case ENEMY_TYPE.SHOOTER:
             transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(1).gameObject.SetActive(true);
             transform.GetChild(2).gameObject.SetActive(false);
-            break;
-
-            case ENEMY_TYPE.RUNNER:
-            //transform.GetChild(0).gameObject.SetActive(false);
-            //transform.GetChild(1).gameObject.SetActive(false);
-            //transform.GetChild(2).gameObject.SetActive(true);
             break;
         }
     }
