@@ -27,9 +27,9 @@ public class EnemyCtrl : MonoBehaviour {
     private const float SHOOTER_HEIGHT              =   2.0f;
 
     // Runner constants
-    private const float RUNNER_SPEED                =   10.0f;
+    private const float RUNNER_SPEED                =   4.0f;
     private const float RUNNER_ACCELERATION         =   20.0f;
-    private const float RUNNER_STOPPING_DISTANCE    =   2.5f;
+    private const float RUNNER_STOPPING_DISTANCE    =   5.5f;
     private const float RUNNER_RADIUS               =   0.99f;
     private const float RUNNER_HEIGHT               =   2.0f;
 
@@ -55,10 +55,10 @@ public class EnemyCtrl : MonoBehaviour {
         //SelectRandomEnemyType();
         SetStats(type, agent);
         SelectTexture(type);
+        //agent.updateRotation = false;
     }
 
     void Update() {
-        
         // Calculate the distance to the target (player)
         float distance = Vector3.Distance(target.position, transform.position);
 
@@ -91,7 +91,8 @@ public class EnemyCtrl : MonoBehaviour {
             Destroy(gameObject);
         }
         
-        //Debug.Log("Target pos: " + target.position + "\nMy pos: " + transform.position + ", Distance: " + distance);
+        // Sprite always face the camera
+        agent.transform.forward = new Vector3(Camera.main.transform.forward.x, 0.0f, Camera.main.transform.forward.z);
     }
 
     private void SelectRandomEnemyType() {
@@ -130,9 +131,9 @@ public class EnemyCtrl : MonoBehaviour {
             break;
 
             case ENEMY_TYPE.RUNNER:
-            transform.GetChild(0).gameObject.SetActive(false);
-            transform.GetChild(1).gameObject.SetActive(false);
-            transform.GetChild(2).gameObject.SetActive(true);
+            //transform.GetChild(0).gameObject.SetActive(false);
+            //transform.GetChild(1).gameObject.SetActive(false);
+            //transform.GetChild(2).gameObject.SetActive(true);
             break;
         }
     }

@@ -276,9 +276,7 @@ public class GunScript : MonoBehaviour {
                 //EnemyCtrl.ENEMY_TYPE enemy_type = script.type;
 
                 // Check if has a texture attatched (if not, can't be destroyed)
-                if (obj.transform.childCount > 0)
-                {
-                    // Check if is enemy
+                // Check if is enemy
                     if (script != null)
                     {
                         switch (weapon_type)
@@ -293,7 +291,6 @@ public class GunScript : MonoBehaviour {
                         }
                     }
                 }
-            }
         } else
         {
             Vector3    dir     = fpsCam.transform.forward;
