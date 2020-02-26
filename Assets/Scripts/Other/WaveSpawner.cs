@@ -115,25 +115,25 @@ public class WaveSpawner : MonoBehaviour
         if (nextWave == 1)
         {
             float   x        = weapon1_pickup_spawn.position.x;
-            float   y        = weapon1_pickup_spawn.position.y - 0.3f;
+            float   y        = weapon1_pickup_spawn.position.y;
             float   z        = weapon1_pickup_spawn.position.z;
             Vector3 spawnPos = new Vector3(x, y, z);
             
             Instantiate(weapon_pickup1, spawnPos, Quaternion.Euler(0, 0, 0));
             weapon1_pickup_spawn.gameObject.GetComponent<MeshRenderer>().enabled = false;
-            weapon1_pickup_spawn.gameObject.GetComponentInChildren<Light>().enabled = false;
+            //weapon1_pickup_spawn.gameObject.GetComponentInChildren<Light>().enabled = false;
         }
         
         // Po stvrtej vlne sa spawne granatomet
         if (nextWave == 2)
         {
             float   x        = weapon2_pickup_spawn.position.x;
-            float   y        = weapon2_pickup_spawn.position.y - 0.3f;
+            float   y        = weapon2_pickup_spawn.position.y;
             float   z        = weapon2_pickup_spawn.position.z;
             Vector3 spawnPos = new Vector3(x, y, z);
             Instantiate(weapon_pickup2, spawnPos, Quaternion.Euler(0, 0, 0));
             weapon2_pickup_spawn.gameObject.GetComponent<MeshRenderer>().enabled = false;
-            weapon2_pickup_spawn.gameObject.GetComponentInChildren<Light>().enabled = false;
+            //weapon2_pickup_spawn.gameObject.GetComponentInChildren<Light>().enabled = false;
         }
         
         // Spawn enemy
