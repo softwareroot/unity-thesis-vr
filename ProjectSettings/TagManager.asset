@@ -40,6 +40,11 @@ TagManager:
   - col_gun2
   - gun_2
   - Gun2
+  - info_weapons
+  - info_htp
+  - r_gun2
+  - info_sniper_lock
+  - info_launcher_lock
   layers:
   - Default
   - TransparentFX

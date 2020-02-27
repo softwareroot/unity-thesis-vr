@@ -3,66 +3,163 @@
 public class QuestionLevel : MonoBehaviour
 {
 
-    [SerializeField] public GameObject questionText;
-    [SerializeField] public GameObject removeText0, removeText1, removeText2;
-    public static bool isStandingOnQuestionmark;
+    [SerializeField] public GameObject UI_element_weapons, UI_element_htp,
+        UI_element_sniper_lock, UI_element_launcher_lock;
+    [SerializeField] public GameObject gameplayCanvas;
+    [SerializeField] public GameObject weaponHolder;
+    
+    private static bool isStandingOnQuestionmarkWeapons, isStandingOnQuestionmarkHTP;
+    private static bool isStandingOnQuestionmarkLockSniper, isStandingOnQuestionmarkLockLauncher;
     
     void Start()
     {
-        isStandingOnQuestionmark = false;
-        questionText.SetActive(false);
+        isStandingOnQuestionmarkWeapons = false;
+        isStandingOnQuestionmarkHTP = false;
+        isStandingOnQuestionmarkLockSniper = false;
+        isStandingOnQuestionmarkLockLauncher = false;
+        UI_element_weapons.SetActive(false);
+        UI_element_htp.SetActive(false);
+        UI_element_sniper_lock.SetActive(false);
+        UI_element_launcher_lock.SetActive(false);
+        gameplayCanvas.SetActive(true);
     }
 
     void Update()
     {
-        if (isStandingOnQuestionmark)
-            questionText.SetActive(true);
-        else
-            questionText.SetActive(false);
+        if (isStandingOnQuestionmarkWeapons) {
+            UI_element_weapons.SetActive(true);
+            UI_element_htp.SetActive(false);
+            
+            if (UI_element_launcher_lock != null)
+            {
+                UI_element_launcher_lock.SetActive(false);
+            }
+            
+            if (UI_element_sniper_lock != null)
+            {
+                UI_element_sniper_lock.SetActive(false);
+            }
+            
+            weaponHolder.SetActive(false);
+            gameplayCanvas.SetActive(false);
+        } else if (isStandingOnQuestionmarkHTP)
+        {
+            UI_element_weapons.SetActive(false);
+            UI_element_htp.SetActive(true);
+            
+            if (UI_element_launcher_lock != null)
+            {
+                UI_element_launcher_lock.SetActive(false);
+            }
+            
+            if (UI_element_sniper_lock != null)
+            {
+                UI_element_sniper_lock.SetActive(false);
+            }
+            
+            weaponHolder.SetActive(false);
+            gameplayCanvas.SetActive(false);
+        } else if (isStandingOnQuestionmarkLockSniper)
+        {
+            UI_element_weapons.SetActive(false);
+            UI_element_htp.SetActive(false);
+            
+            if (UI_element_launcher_lock != null)
+            {
+                UI_element_launcher_lock.SetActive(false);
+            }
+            
+            if (UI_element_sniper_lock != null)
+            {
+                UI_element_sniper_lock.SetActive(true);
+            }
+            
+            weaponHolder.SetActive(true);
+            gameplayCanvas.SetActive(false);
+        } else if (isStandingOnQuestionmarkLockLauncher)
+        {
+            UI_element_weapons.SetActive(false);
+            UI_element_htp.SetActive(false);
+            if (UI_element_launcher_lock != null)
+            {
+                UI_element_launcher_lock.SetActive(true);
+            }
+            
+            if (UI_element_sniper_lock != null)
+            {
+                UI_element_sniper_lock.SetActive(false);
+            }
+            weaponHolder.SetActive(true);
+            gameplayCanvas.SetActive(false);
+        } else
+        {
+            UI_element_weapons.SetActive(false);
+            UI_element_htp.SetActive(false);
+            
+            if (UI_element_launcher_lock != null)
+            {
+                UI_element_launcher_lock.SetActive(false);
+            }
+            
+            if (UI_element_sniper_lock != null)
+            {
+                UI_element_sniper_lock.SetActive(false);
+            }
+
+            
+            gameplayCanvas.SetActive(true);
+            weaponHolder.SetActive(true);
+        }
     }
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            isStandingOnQuestionmark = true;
+            if (gameObject.tag == "info_weapons")
+            {
+                isStandingOnQuestionmarkWeapons = true;
+                isStandingOnQuestionmarkHTP     = false;
+                isStandingOnQuestionmarkLockSniper = false;
+                isStandingOnQuestionmarkLockLauncher = false;
+            } else if (gameObject.tag == "info_htp")
+            {
+                isStandingOnQuestionmarkWeapons      = false;
+                isStandingOnQuestionmarkHTP          = true;
+                isStandingOnQuestionmarkLockSniper   = false;
+                isStandingOnQuestionmarkLockLauncher = false;
+            } else if (gameObject.tag == "info_sniper_lock")
+            {
+                isStandingOnQuestionmarkWeapons      = false;
+                isStandingOnQuestionmarkHTP          = false;
+                isStandingOnQuestionmarkLockSniper   = true;
+                isStandingOnQuestionmarkLockLauncher = false;
+            } else if (gameObject.tag == "info_launcher_lock")
+            {
+                isStandingOnQuestionmarkWeapons      = false;
+                isStandingOnQuestionmarkHTP          = false;
+                isStandingOnQuestionmarkLockSniper   = false;
+                isStandingOnQuestionmarkLockLauncher = true;
+            } else
+            {
+                isStandingOnQuestionmarkWeapons      = false;
+                isStandingOnQuestionmarkHTP          = false;
+                isStandingOnQuestionmarkLockSniper   = false;
+                isStandingOnQuestionmarkLockLauncher = false;
+            }
+            
             GetComponent<MeshRenderer>().enabled = false;
-
-            if (removeText0 != null)
-            {
-                removeText0.SetActive(false);
-            }
-            
-            if (removeText1 != null)
-            {
-                removeText1.SetActive(false);
-            }
-            
-            if (removeText2 != null)
-            {
-                removeText2.SetActive(false);
-            }
+            gameplayCanvas.SetActive(false);
         }
     }
 
     public void OnTriggerExit(Collider other)
     {
-        isStandingOnQuestionmark = false;
+        isStandingOnQuestionmarkWeapons = false;
+        isStandingOnQuestionmarkHTP = false;
+        isStandingOnQuestionmarkLockSniper   = false;
+        isStandingOnQuestionmarkLockLauncher = false;
         GetComponent<MeshRenderer>().enabled = true;
-        
-        if (removeText0 != null)
-        {
-            removeText0.SetActive(true);
-        }
-            
-        if (removeText1 != null)
-        {
-            removeText1.SetActive(true);
-        }
-            
-        if (removeText2 != null)
-        {
-            removeText2.SetActive(true);
-        }
+        gameplayCanvas.SetActive(true);
     }
 }

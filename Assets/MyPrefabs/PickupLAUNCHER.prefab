@@ -146,5 +146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d81ead9e51ac244b79ec1986aa9488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
-  weaponEquipped: 0
+  trans_wep_0: {fileID: 6248517611677971095, guid: 7d65e260d58ed524b94bc5ebdc5557f0,
+    type: 3}
+  trans_wep_1: {fileID: 6540440252237289306, guid: 7d1f5b3140d01d942a5c407734789980,
+    type: 3}
+  trans_wep_2: {fileID: 5081875776098806118, guid: e4d4cf08a2982f648ba4f053325db183,
+    type: 3}

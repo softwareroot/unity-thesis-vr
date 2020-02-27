@@ -23,6 +23,7 @@ public class WaveSpawner : MonoBehaviour
     public Transform[] spawnPoints;
     public Transform weapon1_pickup_spawn, weapon2_pickup_spawn;
     public GameObject weapon_pickup1, weapon_pickup2, weapon_pickup0;
+    [SerializeField] private GameObject sniper_lock, launcher_lock;
 
     void Start()
     {
@@ -122,6 +123,7 @@ public class WaveSpawner : MonoBehaviour
             Instantiate(weapon_pickup1, spawnPos, Quaternion.Euler(0, 0, 0));
             weapon1_pickup_spawn.gameObject.GetComponent<MeshRenderer>().enabled = false;
             //weapon1_pickup_spawn.gameObject.GetComponentInChildren<Light>().enabled = false;
+            Destroy(weapon1_pickup_spawn.gameObject);
         }
         
         // Po stvrtej vlne sa spawne granatomet
@@ -134,6 +136,7 @@ public class WaveSpawner : MonoBehaviour
             Instantiate(weapon_pickup2, spawnPos, Quaternion.Euler(0, 0, 0));
             weapon2_pickup_spawn.gameObject.GetComponent<MeshRenderer>().enabled = false;
             //weapon2_pickup_spawn.gameObject.GetComponentInChildren<Light>().enabled = false;
+            Destroy(weapon2_pickup_spawn.gameObject);
         }
         
         // Spawn enemy

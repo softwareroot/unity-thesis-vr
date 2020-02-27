@@ -31,7 +31,7 @@ public class WeaponSwitching : MonoBehaviour {
         }
     }
 
-    void SelectWeapon() {
+    public void SelectWeapon() {
 
         int i = 0;
         
@@ -45,9 +45,33 @@ public class WeaponSwitching : MonoBehaviour {
             i++;
         }
     }
+
+    public static void SwitchWeapons(Transform transform_wep_0, Transform transform_wep_1, Transform transform_wep_2)
+    {
+        if (selectedWeapon == 0 && HAS_MACHINE_GUN)
+        {
+            transform_wep_0.gameObject.SetActive(true);
+            transform_wep_1.gameObject.SetActive(false);
+            transform_wep_2.gameObject.SetActive(false);
+        }
+        
+        if (selectedWeapon == 1 && HAS_SNIPER_RIFLE)
+        {
+            transform_wep_0.gameObject.SetActive(false);
+            transform_wep_1.gameObject.SetActive(true);
+            transform_wep_2.gameObject.SetActive(false);
+        }
+        
+        if (selectedWeapon == 2 && HAS_GRANADE_LAUNCHER)
+        {
+            transform_wep_0.gameObject.SetActive(false);
+            transform_wep_1.gameObject.SetActive(false);
+            transform_wep_2.gameObject.SetActive(true);
+        }
+    }
     
     
-    private int index = 0;
+    public static int index = 0;
     void Update()
     {
         if (HAS_SNIPER_RIFLE || HAS_MACHINE_GUN || HAS_GRANADE_LAUNCHER) { hasWeapons = true; }

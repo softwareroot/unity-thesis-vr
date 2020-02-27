@@ -67,15 +67,15 @@ public class DisplayAmmo : MonoBehaviour {
 #pragma warning disable CS0618
         if (auto_rifle.gameObject.active) {
 #pragma warning restore CS0618
-            textMesh.text = "AMMO: " + auto_rifle_ammo + " / " + auto_rifle_max_ammo + "\n" + "MAGS: " + auto_rifle_mags;
+            textMesh.text = "AMMO:" + auto_rifle_ammo + "/" + auto_rifle_max_ammo + "\n" + "MAGS:" + auto_rifle_mags;
 #pragma warning disable CS0618
         } else if (sniper_rifle.gameObject.active) {
 #pragma warning restore CS0618
-            textMesh.text = "AMMO: " + sniper_rifle_ammo + " / " + sniper_rifle_max_ammo + "\n" + "MAGS: " + sniper_rifle_mags;
+            textMesh.text = "AMMO:" + sniper_rifle_ammo + "/" + sniper_rifle_max_ammo + "\n" + "MAGS:" + sniper_rifle_mags;
 #pragma warning disable CS0618
         } else if (launcher_rifle.gameObject.active) {
 #pragma warning restore CS0618
-            textMesh.text = "AMMO: " + launcher_ammo + " / " + launcher_max_ammo + "\n" + "MAGS: " + launcher_mags;
+            textMesh.text = "AMMO:" + launcher_ammo + "/" + launcher_max_ammo + "\n" + "MAGS:" + launcher_mags;
         }
     }
 }

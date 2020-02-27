@@ -5,20 +5,16 @@ using UnityEngine;
 public class CanvasScript : MonoBehaviour
 {
 
-    [SerializeField] public GameObject textGun, textHP;
+    [SerializeField] public GameObject canvasGamplay;
 
     void Update()
     {
         if (Scope.isScoped)
         {
-            textGun.SetActive(false);
-            textHP.SetActive(false);
+            canvasGamplay.SetActive(false);
         } else
         {
-            if (!QuestionLevel.isStandingOnQuestionmark) {
-                textGun.SetActive(true);
-                textHP.SetActive(true);
-            }
+            canvasGamplay.SetActive(true);
         }
     }
 }
